@@ -23,10 +23,9 @@ class LRUCache
         return true;
     }
 
-    public function get(string $key): bool | null
+    public function get(string $key): mixed
     {
-        
-        return true;
+        return $this->data->search($key);
     }
 
     public function remove(string $key)
@@ -36,6 +35,6 @@ class LRUCache
 
     public function count(): int
     {
-        return $this->count;
+        return $this->data->getCount();
     }
 }

@@ -76,14 +76,14 @@ class LinkedList
         }
     }
 
-    public function search(string $data): ListNode | bool
+    public function search(string $key): mixed
     {
         if (!$this->total_nodes) return false;
         else {
             $current_node = $this->first_node;
 
             while (!is_null($current_node)) {
-                if ($current_node->data === $data) return $current_node;
+                if ($current_node->key === $key) return $current_node->data;
                 else {
                     $current_node = $current_node->next;
                 }
