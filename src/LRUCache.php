@@ -7,8 +7,10 @@ use Exception;
 class LRUCache
 {
     public LinkedList $data;
-    private int $count = 0;
 
+    /**
+     * @throws Exception
+     */
     public function __construct(int $cacheSize)
     {
         if ($cacheSize <= 1000) {
@@ -28,9 +30,9 @@ class LRUCache
         return $this->data->search($key);
     }
 
-    public function remove(string $key)
+    public function remove(string $key): bool
     {
-
+        return $this->data->delete($key);
     }
 
     public function count(): int

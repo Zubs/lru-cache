@@ -41,7 +41,7 @@ class LinkedList
         return true;
     }
 
-    public function delete(string $data): bool
+    public function delete(string $key): bool
     {
         if (is_null($this->first_node)) return false;
         else {
@@ -50,7 +50,7 @@ class LinkedList
             $next_node = $current_node->next;
 
             while (!is_null($current_node)) {
-                if ($current_node->data === $data) {
+                if ($current_node->key === $key) {
                     if (is_null($previous_node)) {
                         $this->deleteFirst();
                         break;
@@ -71,6 +71,34 @@ class LinkedList
                     $next_node = $current_node->next;
                 }
             }
+
+            return true;
+        }
+    }
+
+    public function deleteFirst(): bool
+    {
+        if (is_null($this->first_node)) return false;
+        else {
+            if (!is_null($this->first_node->next)) {
+                $this->first_node = $this->first_node->next;
+                $this->first_node->prev = null;
+            } else $this->first_node = null;
+
+            $this->total_nodes -= 1;
+
+            return true;
+        }
+    }
+
+    public function deleteLast(): bool
+    {
+        if (is_null($this->first_node)) return false;
+        else {
+            $current_last_node = $this->last_node;
+            $this->last_node = $current_last_node->prev;
+            $this->last_node->next = null;
+            $this->total_nodes -= 1;
 
             return true;
         }
