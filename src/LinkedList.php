@@ -28,11 +28,7 @@ class LinkedList
             $this->first_node = $new_node;
             
             if ($this->total_nodes >= $this->maxLength) {
-                $current_last_node = $this->last_node;
-                $this->last_node = $current_last_node->prev;
-                $this->last_node->next = null;
-                
-                $this->total_nodes -= 1;
+                $this->deleteLast();
             }
         }
 

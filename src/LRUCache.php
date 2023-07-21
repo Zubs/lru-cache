@@ -20,9 +20,7 @@ class LRUCache
 
     public function set(string $key, mixed $data): bool
     {
-        $this->data->insertFirst($key, $data);
-
-        return true;
+        return $this->data->insertFirst($key, $data);
     }
 
     public function get(string $key): mixed
