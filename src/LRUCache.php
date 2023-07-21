@@ -25,7 +25,12 @@ class LRUCache
 
     public function get(string $key): mixed
     {
-        return $this->data->search($key);
+        $response = $this->data->search($key);
+        
+        $this->remove($key);
+        $this->data->insertFirst($key, $response);
+        
+        return $response;
     }
 
     public function remove(string $key): bool
