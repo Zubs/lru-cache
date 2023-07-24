@@ -6,7 +6,7 @@ use Exception;
 
 class LRUCache
 {
-    public LinkedList $data;
+    private LinkedList $data;
 
     /**
      * @throws Exception
